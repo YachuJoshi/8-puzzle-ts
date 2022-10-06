@@ -1,5 +1,8 @@
 import { isEqual, cloneDeep } from "lodash";
 import { Direction, State, QueueItem, Queue } from "./types";
+interface PuzzleProps {
+  initialState?: State;
+}
 
 const FINAL_STATE: State = [
   [1, 2, 3],
@@ -12,8 +15,8 @@ export class Puzzle {
   gScore: number;
   queue: Queue;
 
-  constructor() {
-    this.state = [
+  constructor(props: PuzzleProps) {
+    this.state = props.initialState || [
       [1, 8, 2],
       [0, 4, 3],
       [7, 6, 5],
